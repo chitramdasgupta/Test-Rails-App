@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :require_login
 
@@ -8,8 +10,8 @@ class PostsController < ApplicationController
   private
 
   def require_login
-    unless logged_in?
-      redirect_to root_url, alert: "You must be logged in to access this page."
-    end
+    return if logged_in?
+
+    redirect_to root_url, alert: 'You must be logged in to access this page.'
   end
 end
