@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create, :destroy], if: -> { request.format.json? }
+  skip_before_action :verify_authenticity_token, only: %i[create destroy], if: -> { request.format.json? }
 
   def new; end
 
@@ -22,8 +22,8 @@ class SessionsController < ApplicationController
 
   def destroy
     if request.format.json?
-      token = request.headers['Authorization']&.match(/Token token=\"([^\"]+)\"/)&.captures&.first
-      user = User.find_by(token: token)
+      token = request.headers['Authorization']&.match(/Token token="([^"]+)"/)&.captures&.first
+      user = User.find_by(token:)
 
       if user
         user.clear_token

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :require_login
 
@@ -12,11 +14,11 @@ class PostsController < ApplicationController
   private
 
   def require_login
-    unless logged_in?
-      respond_to do |format|
-        format.html { redirect_to root_url, alert: 'You must be logged in to access this page.' }
-        format.json { render json: { error: 'You must be logged in to access this page.' }, status: :unauthorized }
-      end
+    return if logged_in?
+
+    respond_to do |format|
+      format.html { redirect_to root_url, alert: 'You must be logged in to access this page.' }
+      format.json { render json: { error: 'You must be logged in to access this page.' }, status: :unauthorized }
     end
   end
 end
