@@ -15,6 +15,16 @@ class User < ApplicationRecord
     hashed_password == OpenSSL::Digest::SHA256.hexdigest(submitted_password + salt)
   end
 
+  def generate_token
+    self.token = SecureRandom.urlsafe_base64.to_s
+    save
+  end
+
+  def clear_token
+    self.token = nil
+    save
+  end
+
   private
 
   def hash_password
