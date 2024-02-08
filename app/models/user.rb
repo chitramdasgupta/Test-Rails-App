@@ -28,7 +28,7 @@ class User < ApplicationRecord
   private
 
   def hash_password
-    return unless password.present?
+    return if password.blank?
 
     self.salt = SecureRandom.hex
     self.hashed_password = OpenSSL::Digest::SHA256.hexdigest(password + salt)
