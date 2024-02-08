@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<%= form_with(scope: :session, url: login_path, local: true) do |form| %>
+  <div class="form-field">
+    <%= form.label :email %>
+    <%= form.email_field :email, autofocus: true, required: true, class: "input" %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true, class: "input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Login", class: "button" %>
+  </div>
+<% end %>
