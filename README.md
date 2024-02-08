@@ -1,4 +1,4 @@
-# Requirements
+# Ruby on Rails app
 
 ![Screenshot of my project](app/assets/images/screenshot.png "Project Screenshot")
 
