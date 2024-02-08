@@ -1,6 +1,7 @@
 <h1>Welcome to the test app built with Ruby on Rails 🚀</h1>
 <% if logged_in? %>
-  <h2>Greetings, <%= current_user.email %></h2>
+  <h2>Greetings,
+    <%= current_user.email %></h2>
 <% else %>
   <h2>You are not logged in yet</h2>
 <% end %>
