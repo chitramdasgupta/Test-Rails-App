@@ -16,7 +16,16 @@ class SessionsController < ApplicationController
         redirect_to posts_path, notice: 'Logged in successfully'
       end
     else
-      render json: { error: 'Email or password is invalid' }, status: :unauthorized
+      respond_to do |format|
+        if request.format.json?
+          format.json { render json: { error: 'Email or password is invalid' }, status: :unauthorized }
+        else
+          format.html do
+            flash.now[:alert] = 'Email or password is invalid'
+            render 'new', status: :unprocessable_entity
+          end
+        end
+      end
     end
   end
 
