@@ -1,6 +1,8 @@
 # Requirements
 
-This has been tested with the following:
+![Screenshot of my project](app/assets/images/screenshot.png "Project Screenshot")
+
+This application has been tested with the following:
 
 1. Ruby 3.1.2
 2. Rails 7.1.3
